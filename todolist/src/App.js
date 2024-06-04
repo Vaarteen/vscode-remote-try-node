@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
-import Welcome from './Welcome';
+import React from 'react';
+import styled from 'styled-components';
+
+const AppWrapper = styled.div`
+  text-align: center;
+`;
+
+const Header = styled.header`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
-    <div>
-      <header>
-        <Welcome name="Bob" />
-      </header>
-      <main>
-        <p>Vous avez cliqué {count} fois</p>
-        <button onClick={() => setCount(count + 1)}> Cliquez ici </button>
-      </main>
-    </div>
-  )
+    <AppWrapper>
+      <Header>
+        <p>Éditez <code>src/App.js</code> et sauvegardez pour recharger</p>
+      </Header>
+    </AppWrapper>
+  );
 }
-
 export default App;
