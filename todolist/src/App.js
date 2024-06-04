@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Counter() {
-  // déclaration d’un état avec variable count = 0 et setter setCount
+function ExampleWithUseEffect() {
   const [count, setCount] = useState(0);
-  function onClickAction() {
-    setCount((c) => c + 1);
-    setCount((c) => c + 1);
-    setCount((c) => c + 1);
-  }
+  useEffect(() => {
+    /* modification du titre de l'onglet, donc interaction avec
+    l'environnement : la fonction n'est pas pure */
+    document.title = `Vous avez cliqué ${count} fois`;
+  });
   return (
     <div>
       <p>Vous avez cliqué {count} fois</p>
-      <button onClick={onClickAction}> +3 </button>
+      <button onClick={() => setCount(count + 1)}> Cliquez ici </button>
     </div>
   );
 }
+
 
 function Welcome(props) {
   return <h1>Bonjour, {props.nom}</h1>;
@@ -24,7 +24,7 @@ function Main() {
   return (
     <main>
       <Welcome nom="Bob" />
-      <Counter />
+      <ExampleWithUseEffect />
     </main>
   )
 }
