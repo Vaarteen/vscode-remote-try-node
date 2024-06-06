@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button'
 
+function useCustomHook(value) {
+  // La logique du hook de débugage
+  React.useDebugValue(value ? 'Vrai' : "Faux");
+}
+
 function App() {
-  const [count, setCount] = useState(0);
-  console.log('Count', count);
+  const [value, setValue] = useState(false);
+  useCustomHook(value);
   return (
     <div>
-      <Button onClick={() => setCount(count + 1)}> +1 </Button>
-      <p> {count} </p>
+      <Button onClick={() => setValue(!value)}> Changer </Button>
+      <p> {value.toString()} </p>
     </div>
   )
 }
